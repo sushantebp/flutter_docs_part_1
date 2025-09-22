@@ -11,6 +11,8 @@ class _KeysUsecasePageState extends State<KeysUsecasePage> {
   final List<String> _items = ["Apple", "Banana", "Cherry"];
   final PageStorageBucket _bucket = PageStorageBucket();
   bool isToggle = false;
+  final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
+  final _textController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +35,7 @@ class _KeysUsecasePageState extends State<KeysUsecasePage> {
                 itemBuilder: (BuildContext context, int index) {
                   final item = _items[index];
                   return ListTile(
-                    // this use of key
+                    // this use of object for each key
                     key: ObjectKey(item),
                     title: Text(
                       item,
@@ -42,6 +44,14 @@ class _KeysUsecasePageState extends State<KeysUsecasePage> {
                   );
                 },
               ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          // use case of global key
+          Form(
+            key: _globalKey,
+            child: Column(
+              children: [TextFormField(controller: _textController)],
             ),
           ),
           const SizedBox(height: 10),
