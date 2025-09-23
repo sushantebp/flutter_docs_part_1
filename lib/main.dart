@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn_app/pages/handling_user_input_page.dart';
+import 'package:learn_app/practise/pages/search_bar_example_page.dart';
 
 void main(List<String> args) {
   runApp(const ButtonTypeApp());
@@ -10,6 +10,6 @@ class ButtonTypeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: const HandlingUserInputPage());
+    return MaterialApp(home: const SearchBarExamplePage());
   }
 }
