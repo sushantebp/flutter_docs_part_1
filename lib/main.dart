@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn_app/pages/dialog_box_example_page.dart';
+import 'package:learn_app/pages/network_example_page.dart';
 
 void main(List<String> args) {
   runApp(const ButtonTypeApp());
@@ -10,6 +10,6 @@ class ButtonTypeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: const DialogBoxExamplePage());
+    return MaterialApp(home: const NetworkExamplePage());
   }
 }
