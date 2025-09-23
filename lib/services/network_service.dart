@@ -7,7 +7,9 @@ import 'package:learn_app/models/album_extension.dart';
 import 'package:learn_app/models/todos.dart';
 
 class NetworkService {
-  NetworkService._private();
+  NetworkService._private() {
+    dio.interceptors.add(_simpleInterceptor());
+  }
   static final NetworkService _instance = NetworkService._private();
   factory NetworkService() => _instance;
 
@@ -34,6 +36,21 @@ class NetworkService {
     return Options(method: method, headers: mergedHeaders);
   }
 
+  InterceptorsWrapper _simpleInterceptor() {
+    final wrapper = InterceptorsWrapper(
+      onRequest: (options, handler) {
+        handler.next(options);
+      },
+      onResponse: (response, handler) {
+        handler.next(response);
+      },
+      onError: (error, handler) {
+        handler.next(error);
+      },
+    );
+    return wrapper;
+  }
+
   // http method : GET
   Future<Album?> getRequest() async {
     try {
@@ -54,7 +71,6 @@ class NetworkService {
   // http method : POST
   Future<String?> postRequest(Todos todos) async {
     final data = jsonEncode(todos.toMap());
-    log("Data : $data");
     try {
       final response = await dio.post(
         "/todos",
