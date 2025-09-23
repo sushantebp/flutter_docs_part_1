@@ -28,6 +28,8 @@ class _DialogBoxExamplePageState extends State<DialogBoxExamplePage> {
     }
   }
 
+  final List<int> items = List<int>.generate(10, (int index) => index);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +60,24 @@ class _DialogBoxExamplePageState extends State<DialogBoxExamplePage> {
               onPressed: _selectDateTime,
             ),
             const SizedBox(height: 12),
+            // swipe and slide
+            Expanded(
+              child: ListView.builder(
+                itemCount: items.length,
+                itemBuilder: (context, index) {
+                  return Dismissible(
+                    background: Container(color: Colors.red),
+                    key: ValueKey<int>(items[index]),
+                    onDismissed: (direction) {
+                      setState(() {
+                        items.removeAt(index);
+                      });
+                    },
+                    child: ListTile(title: Text("Item $index")),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
