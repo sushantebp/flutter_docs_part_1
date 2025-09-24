@@ -1,8 +1,10 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_app/helper/string_helper.dart';
 
 enum Calendar { day, week, month, year }
 
+@RoutePage()
 class HandlingUserInputPage extends StatefulWidget {
   const HandlingUserInputPage({super.key});
 

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:learn_app/pages/network_example_page.dart';
+import 'package:learn_app/router/app_router.dart';
 
 void main(List<String> args) {
-  runApp(const ButtonTypeApp());
+  runApp(LearnApp());
 }
 
-class ButtonTypeApp extends StatelessWidget {
-  const ButtonTypeApp({super.key});
+class LearnApp extends StatelessWidget {
+  final _appRouter = AppRouter();
+  LearnApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: const NetworkExamplePage());
+    return MaterialApp.router(routerConfig: _appRouter.config());
   }
 }

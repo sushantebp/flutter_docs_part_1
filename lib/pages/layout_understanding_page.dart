@@ -76,17 +76,18 @@
 
 // follwing is the cost optimzation against using shrinkwrap(listview,gridview)
 // customscrollview,silverlist uses lazy-loading,it uses widget that are visible on screen
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_app/widgets/image_sample.dart';
 import 'package:learn_app/widgets/listview_sample.dart';
 
+@RoutePage()
 class LayoutUnderstandingPage extends StatelessWidget {
   const LayoutUnderstandingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      
       child: Scaffold(
         body: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {

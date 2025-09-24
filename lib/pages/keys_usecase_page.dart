@@ -1,5 +1,9 @@
+import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:learn_app/router/app_router.dart';
 
+@RoutePage()
 class KeysUsecasePage extends StatefulWidget {
   const KeysUsecasePage({super.key});
 
@@ -10,9 +14,18 @@ class KeysUsecasePage extends StatefulWidget {
 class _KeysUsecasePageState extends State<KeysUsecasePage> {
   final List<String> _items = ["Apple", "Banana", "Cherry"];
   final PageStorageBucket _bucket = PageStorageBucket();
+  final TextEditingController _idController = TextEditingController();
+
   bool isToggle = false;
   final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
   final _textController = TextEditingController();
+  @override
+  void dispose() {
+    _idController.dispose();
+    _textController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +36,21 @@ class _KeysUsecasePageState extends State<KeysUsecasePage> {
           IconButton(
             onPressed: () => setState(() => isToggle = !isToggle),
             icon: Icon(isToggle ? Icons.toggle_off : Icons.toggle_on),
+          ),
+
+          TextField(
+            controller: _idController,
+            decoration: InputDecoration(
+              hintText: 'Enter your id here',
+              border: const OutlineInputBorder(),
+              focusedBorder: const OutlineInputBorder(),
+            ),
+          ),
+          // navigation to detail page with id from text
+          ElevatedButton(
+            onPressed: () =>
+                context.router.push(DetailsRoute(id: _idController.text)),
+            child: const Text('Pass Id'),
           ),
           const SizedBox(height: 10),
           Expanded(

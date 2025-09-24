@@ -1,7 +1,9 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_app/models/todos.dart';
 import 'package:learn_app/services/network_service.dart';
 
+@RoutePage()
 class NetworkExamplePage extends StatelessWidget {
   const NetworkExamplePage({super.key});
 

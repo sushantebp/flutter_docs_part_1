@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 
 class CounterNotifier extends ChangeNotifier {
@@ -16,6 +17,7 @@ class CounterNotifier extends ChangeNotifier {
   }
 }
 
+@RoutePage()
 class StateManageExamplePage extends StatefulWidget {
   const StateManageExamplePage({super.key});
 

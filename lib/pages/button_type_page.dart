@@ -1,5 +1,9 @@
+import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:learn_app/router/app_router.dart';
 
+@RoutePage()
 class ButtonTypePage extends StatelessWidget {
   const ButtonTypePage({super.key});
 
@@ -15,6 +19,10 @@ class ButtonTypePage extends StatelessWidget {
             ButtonTypeExample(isEnabled: true),
             ButtonTypeExample(isEnabled: false),
             const Spacer(),
+            MaterialButton(
+              onPressed: () => context.router.push(NetworkExampleRoute()),
+              child: const Text('Navigation'),
+            ),
           ],
         ),
       ),
